@@ -117,3 +117,6 @@ array=(myNicVM1 myNicVM2)
  #########################################
 
  echo "You need to configure NAT inbound rules  and outband rules in Load Balancer in order to authorize porte 22 SSH and also the same thing on your virtual machines networking, allow mariadb server for azure service."
+
+
+ this is second commit
