@@ -9,7 +9,7 @@ foreach ($resource in $resources) {
     az resource delete --resource-group PERSO_DRITON --ids $resource.id --verbose
 }
 
-echo "####################################Le script a été bien executé.##########################################"
+Write-Output "####################################Le script a été bien executé.##########################################"
 ```
 
 ***
