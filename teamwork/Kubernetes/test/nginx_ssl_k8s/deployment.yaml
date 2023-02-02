@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dritonnginx
+  namespace: driton 
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: apache2
+        image: httpd
+        ports:
+        - name: exposehttp
+          containerPort: 80
+          protocol: TCP

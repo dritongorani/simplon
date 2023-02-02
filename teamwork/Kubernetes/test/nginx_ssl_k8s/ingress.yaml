@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dritoningress
+  namespace: driton
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/issuer: letencrypt-production
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: dritontest.sandbox.aws.teamwork.net
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dritonservice
+            port:
+              number: 80
+
+  tls:
+    - hosts:
+      - dritontest.sandbox.aws.teamwork.net
+      secretName: dritonsecret2
+---
+
+###Ingress controller
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: nginx
+spec:
+  controller: k8s.io/ingress-nginx

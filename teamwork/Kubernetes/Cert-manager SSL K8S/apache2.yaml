@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache
+  namespace: driton
+  labels:
+    app: httpd_app_nautilus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpd_app_nautilus
+  template:
+    metadata:
+      labels:
+        app: httpd_app_nautilus
+    spec:
+      containers:
+        - name: apache2
+          image: httpd:latest
+          ports:
+            - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-service-nautilus
+  namespace: driton
+spec:
+  type: LoadBalancer
+  selector:
+    app: httpd_app_nautilus
+  ports:
+    - port: 80
+      targetPort: 80
