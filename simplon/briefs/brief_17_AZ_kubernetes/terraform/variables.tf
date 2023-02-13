@@ -12,7 +12,7 @@ variable "agent_count" {
 # }
 
 variable "cluster_name" {
-  default = "dritoncluster"
+  default = "dritonclustertest"
 }
 
 variable "dns_prefix" {
