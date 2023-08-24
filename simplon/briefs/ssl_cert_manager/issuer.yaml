@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+  # namespace: driton
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: tony@gmail.com
+    privateKeySecretRef:
+      name: dritonsecret
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
