@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chantex-logger-deployment
+  namespace: randomlogger
+spec:
+  replicas: 3  # You can adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: chantex-logger
+  template:
+    metadata:
+      labels:
+        app: chantex-logger
+    spec:
+      containers:
+        - name: chantex-logger-container
+          image: chentex/random-logger  # Replace with your actual image name and tag
